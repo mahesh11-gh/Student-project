@@ -1,6 +1,9 @@
 package com.org.student.dto;
 
 import com.org.student.entity.StudentEntity;
+import jakarta.validation.constraints.Min;
+import jakarta.validation.constraints.NotEmpty;
+import jakarta.validation.constraints.Size;
 
 import java.util.List;
 import java.util.Objects;
@@ -8,8 +11,12 @@ import java.util.Objects;
 public class StudentDTO {
 
     private Long id ;
+    @NotEmpty
+    @Size(min = 2, max = 50)
     private String name;
+    @Min(10)
     private Integer age;
+    @NotEmpty
     private String standard;
     private String subjects;
 

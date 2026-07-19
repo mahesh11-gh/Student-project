@@ -3,6 +3,7 @@ package com.org.student.controller;
 import com.org.student.dto.StudentDTO;
 import com.org.student.entity.StudentEntity;
 import com.org.student.service.StudentService;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.HttpStatusCode;
@@ -35,7 +36,7 @@ public class StudentController {
     }
 
     @PostMapping("student")
-    public ResponseEntity<String> createStudent(@RequestBody StudentDTO dto) throws Exception{
+    public ResponseEntity<String> createStudent(@Valid @RequestBody StudentDTO dto) throws Exception{
 
         StudentEntity result = studentService.createStudent(dto);
 
@@ -43,7 +44,7 @@ public class StudentController {
     }
 
     @PutMapping("student/{id}")
-    public ResponseEntity<String> updateStudent(@PathVariable Long id ,@RequestBody StudentDTO dto) throws Exception{
+    public ResponseEntity<String> updateStudent(@PathVariable Long id ,@RequestBody @Valid StudentDTO dto) throws Exception{
 
         studentService.updateStudent(id, dto) ;
 
